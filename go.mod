@@ -1,8 +1,9 @@
-module gorm.io/driver/mysql
+module github.com/goees/gorm-driver-gbase
+
 
 go 1.14
 
 require (
-	github.com/go-sql-driver/mysql v1.5.0
+	github.com/goees/go-mysql v1.5.1
 	gorm.io/gorm v1.20.6
 )

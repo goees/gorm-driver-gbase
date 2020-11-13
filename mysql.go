@@ -7,7 +7,7 @@ import (
 	"math"
 	"strings"
 
-	_ "github.com/go-sql-driver/mysql"
+	_ "github.com/goees/go-mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/callbacks"
 	"gorm.io/gorm/clause"
@@ -92,6 +92,9 @@ func (dialector Dialector) Initialize(db *gorm.DB) (err error) {
 		} else if strings.HasPrefix(version, "5.") {
 			dialector.Config.DisableDatetimePrecision = true
 			dialector.Config.DontSupportRenameIndex = true
+			dialector.Config.DontSupportRenameColumn = true
+			dialector.Config.DontSupportForShareClause = true
+		} else if strings.HasPrefix(version, "8.8") {
 			dialector.Config.DontSupportRenameColumn = true
 			dialector.Config.DontSupportForShareClause = true
 		}
